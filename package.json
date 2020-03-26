@@ -1,8 +1,11 @@
 {
   "name": "good-morning-dashboard",
+  "homepage": "https://josiahyeow.github.io/good-morning-dashboard",
   "scripts": {
     "start": "webpack-dev-server --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@babel/runtime": "^7.9.2",
@@ -16,6 +19,7 @@
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-react": "^7.9.1",
     "babel-loader": "^8.1.0",
+    "gh-pages": "^2.2.0",
     "html-webpack-plugin": "^4.0.0",
     "prettier": "2.0.2",
     "webpack": "^4.42.0",
