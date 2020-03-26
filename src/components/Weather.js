@@ -3,6 +3,28 @@ import styled from 'styled-components'
 import config from '../config'
 import Card from './Card'
 
+const weatherIcon = {
+  "01d": "sun.svg",
+  "02d": "cloudy.svg",
+  "03d": "cloud.svg",
+  "04d": "windy.svg",
+  "09d": "rain.svg",
+  "10d": "rain-3.svg",
+  "11d": "storm.svg",
+  "13d": "snowflake.svg",
+  "50d": "rain-1.svg",
+
+  "01n": "moon.svg",
+  "02n": "cloudy-night.svg",
+  "03n": "cloud.svg",
+  "04n": "wind.svg",
+  "09n": "rain.svg",
+  "10n": "rain-2.svg",
+  "11n": "storm.svg",
+  "13n": "snowflake.svg",
+  "50n": "rain-2.svg"
+}
+
 const WeatherContainer = styled.div`
   display: grid;
   grid-template-columns: auto auto auto;
@@ -23,7 +45,9 @@ const MinTemp = styled.h3`
   opacity: 40%;
 `
 
-const Icon = styled.img``
+const Icon = styled.img`
+  width: 3rem;
+`
 
 const Description = styled.p`
   margin: 16px 0px 0px 0px;
@@ -43,7 +67,7 @@ const Weather = () => {
       const data = await (await fetch(request)).json()
       setMaxTemp(Math.round(data.main.temp_max))
       setMinTemp(Math.round(data.main.temp_min))
-      setIcon(`http://openweathermap.org/img/w/${data.weather[0].icon}.png`)
+      setIcon(`/weather-icons/${weatherIcon[data.weather[0].icon]}`)
       const description = data.weather[0].description
       setDescription(description.charAt(0).toUpperCase() + description.slice(1))
     }
