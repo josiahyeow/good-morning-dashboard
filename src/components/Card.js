@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const CardStyle = styled.div`
   background: #fff;
-  padding: 1.5rem;
+  padding: 1rem;
   margin: 1.5rem;
   border-radius: 12px;
   max-width: fit-content;

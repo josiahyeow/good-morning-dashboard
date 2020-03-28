@@ -4,15 +4,15 @@ import { covidConfig } from '../config'
 import Card from './Card'
 
 const Statuses = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-  grid-gap: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
   max-width: 24rem;
 `
 
 const Status = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 0rem 1rem 1rem 0rem;
 `
 
 const Label = styled.span`
@@ -26,6 +26,7 @@ const Data = styled.span`
 const Flag = styled.img`
   max-width: 100px;
   border-radius: 6px;
+  margin: 0rem 1rem 1rem 0rem;
 `
 
 const Covid = () => {

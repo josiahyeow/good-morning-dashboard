@@ -5,17 +5,17 @@ import Card from './Card'
 import WeatherIcon from './WeatherIcon/WeatherIcon'
 
 const WeatherContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
+  display: flex;
   align-items: center;
-  grid-gap: 1.2rem;
   max-width: 16rem;
+  flex-wrap: wrap;
 `
 
 const MaxTemp = styled.h3`
   font-weight: bold;
   font-size: 2rem;
   margin: 0px;
+  margin-right: 1rem;
 `
 
 const MinTemp = styled.h3`

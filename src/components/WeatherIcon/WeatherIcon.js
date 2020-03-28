@@ -15,6 +15,7 @@ import Rain2 from './icons/rain-2.svg'
 
 const Icon = styled.div`
   width: 3rem;
+  margin-right: 1rem;
 `
 
 const getIcon = ({ code }) => {
