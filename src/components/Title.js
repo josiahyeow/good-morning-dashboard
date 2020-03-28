@@ -9,7 +9,7 @@ const Welcome = styled.div`
 const Title = () => {
   return (
     <Welcome>
-      <h1>Good Morning, Josiah 👋</h1>
+      <h1>Dashboard</h1>
     </Welcome>
   )
 }

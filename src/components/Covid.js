@@ -24,7 +24,10 @@ const Data = styled.span`
   font-size: 2rem;
 `
 const Flag = styled.img`
-  max-width: 100px;
+  max-width: auto;
+  max-height: 55px;
+  width: auto;
+  height: auto;
   border-radius: 6px;
   margin: 0rem 1rem 1rem 0rem;
 `

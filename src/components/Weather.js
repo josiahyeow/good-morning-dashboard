@@ -22,7 +22,7 @@ const MinTemp = styled.h3`
   font-weight: normal;
   font-size: 2rem;
   margin: 0px;
-  opacity: 40%;
+  color: #575757;
 `
 
 const Description = styled.p`
