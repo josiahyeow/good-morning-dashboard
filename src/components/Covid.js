@@ -5,8 +5,9 @@ import Card from './Card'
 
 const Statuses = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  grid-gap: 1.2rem;
+  max-width: 24rem;
 `
 
 const Status = styled.div`
@@ -25,16 +26,6 @@ const Data = styled.span`
 const Flag = styled.img`
   max-width: 100px;
   border-radius: 6px;
-`
-
-const Arrow = styled.i`
-  border: solid black;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-  transform: rotate(-135deg);
-  -webkit-transform: rotate(-135deg);
-  margin: 0px 0px 2px 8px;
 `
 
 const Covid = () => {
@@ -71,10 +62,7 @@ const Covid = () => {
         </Status>
         <Status>
           <Label>Today</Label>
-          <Data>
-            {todayCases}
-            <Arrow />
-          </Data>
+          <Data> {todayCases}</Data>
         </Status>
         <Status>
           <Label>Active</Label>

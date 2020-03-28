@@ -6,11 +6,11 @@ import Covid from './components/Covid'
 
 const AppContainer = styled.div`
   font-family: 'Inter', sans-serif;
-  margin: 2rem;
+  padding: 1.5rem;
 `
 const WidgetSection = styled.section`
-  display: grid;
-  grid-row-gap: 16px;
+  // display: flex;
+  // flex-wrap: wrap;
 `
 
 const App = () => {

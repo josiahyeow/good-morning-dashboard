@@ -6,9 +6,10 @@ import WeatherIcon from './WeatherIcon/WeatherIcon'
 
 const WeatherContainer = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
   align-items: center;
-  grid-column-gap: 24px;
+  grid-gap: 1.2rem;
+  max-width: 16rem;
 `
 
 const MaxTemp = styled.h3`

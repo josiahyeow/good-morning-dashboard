@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Welcome = styled.div`
   color: #fff;
-  padding: 2rem 0px;
+  padding: 1.5rem;
 `
 
 const Title = () => {
