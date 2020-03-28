@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Title from './components/Title'
 import Weather from './components/Weather'
+import Covid from './components/Covid'
 
 const AppContainer = styled.div`
   font-family: 'Inter', sans-serif;
@@ -18,6 +19,7 @@ const App = () => {
       <Title />
       <WidgetSection>
         <Weather />
+        <Covid />
       </WidgetSection>
     </AppContainer>
   )

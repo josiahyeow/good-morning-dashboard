@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import config from '../config'
+import { weatherConfig } from '../config'
 import Card from './Card'
 import WeatherIcon from './WeatherIcon/WeatherIcon'
 
@@ -37,7 +37,7 @@ const Weather = () => {
 
   useEffect(() => {
     async function fetchWeather() {
-      const { OW_URL, OW_CITY_ID, OW_UNITS, OW_KEY } = config
+      const { OW_URL, OW_CITY_ID, OW_UNITS, OW_KEY } = weatherConfig
       const request = `${OW_URL}id=${OW_CITY_ID}&units=${OW_UNITS}&appid=${OW_KEY}`
       const data = await (await fetch(request)).json()
       setMaxTemp(Math.round(data.main.temp_max))
