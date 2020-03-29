@@ -6,7 +6,6 @@ const CardStyle = styled.div`
   padding: 1rem;
   margin: 1.5rem;
   border-radius: 12px;
-  min-width: 13rem;
   -webkit-box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);

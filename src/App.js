@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Title from './components/Title'
 import Clock from './components/Clock'
 import WeekDay from './components/WeekDay'
+import Calendar from './components/Calendar'
 import Weather from './components/Weather'
 import Covid from './components/Covid'
 
@@ -21,6 +22,7 @@ const App = () => {
       <WidgetSection>
         <Clock />
         <WeekDay />
+        <Calendar />
         <Weather />
         <Covid />
       </WidgetSection>

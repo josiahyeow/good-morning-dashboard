@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Card from './Card'
 
@@ -36,7 +36,7 @@ const WeekDay = () => {
     <Card title={'Day'}>
       <Days>
         {Object.values(WEEKDAYS).map((day) => (
-          <Day day={day} today={today}>
+          <Day key={day} day={day} today={today}>
             {day}
           </Day>
         ))}

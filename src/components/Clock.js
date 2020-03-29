@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Card from './Card'
 
+const Container = styled.div`
+  min-width: 13rem;
+`
+
 const Time = styled.span`
   font-size: 3rem;
   font-weight: bold;
@@ -16,7 +20,9 @@ const Clock = () => {
 
   return (
     <Card title={'Time'}>
-      <Time>{time.toLocaleTimeString()}</Time>
+      <Container>
+        <Time>{time.toLocaleTimeString()}</Time>
+      </Container>
     </Card>
   )
 }
