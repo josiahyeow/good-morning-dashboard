@@ -20,22 +20,22 @@ const Day = styled.div`
 `
 
 const WEEKDAYS = {
-  0: 'Sun',
-  1: 'Mon',
-  2: 'Tue',
-  3: 'Wed',
-  4: 'Thu',
-  5: 'Fri',
-  6: 'Sat',
+  0: 'Mon',
+  1: 'Tue',
+  2: 'Wed',
+  3: 'Thu',
+  4: 'Fri',
+  5: 'Sat',
+  6: 'Sun',
 }
 
 const WeekDay = () => {
-  const [today] = useState(new Date().getDay())
-
+  const [today] = useState((new Date().getDay() + 6) % 7)
+  const weekdays = Object.values(WEEKDAYS)
   return (
     <Card title={'Day'}>
       <Days>
-        {Object.values(WEEKDAYS).map((day) => (
+        {weekdays.map((day) => (
           <Day key={day} day={day} today={today}>
             {day}
           </Day>

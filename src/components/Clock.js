@@ -21,7 +21,14 @@ const Clock = () => {
   return (
     <Card title={'Time'}>
       <Container>
-        <Time>{time.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })}</Time>
+        <Time>
+          {time.toLocaleTimeString('en-US', {
+            hour: 'numeric',
+            minute: 'numeric',
+            second: 'numeric',
+            hour12: true,
+          })}
+        </Time>
       </Container>
     </Card>
   )
