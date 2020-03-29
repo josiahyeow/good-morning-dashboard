@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Title from './components/Title'
 import Clock from './components/Clock'
+import WeekDay from './components/WeekDay'
 import Weather from './components/Weather'
 import Covid from './components/Covid'
 
@@ -19,6 +20,7 @@ const App = () => {
       <Title />
       <WidgetSection>
         <Clock />
+        <WeekDay />
         <Weather />
         <Covid />
       </WidgetSection>
