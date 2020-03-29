@@ -7,7 +7,7 @@ const Container = styled.div`
 `
 
 const Time = styled.span`
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;
 `
 
