@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Card from './Card'
 
 const Container = styled.div`
-  min-width: 13rem;
+  min-width: 17rem;
 `
 
 const Time = styled.span`
@@ -21,7 +21,7 @@ const Clock = () => {
   return (
     <Card title={'Time'}>
       <Container>
-        <Time>{time.toLocaleTimeString()}</Time>
+        <Time>{time.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })}</Time>
       </Container>
     </Card>
   )
