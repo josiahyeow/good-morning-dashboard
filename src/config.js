@@ -8,6 +8,9 @@ const weatherConfig = {
 const covidConfig = {
   URL: 'https://corona.lmao.ninja/countries/',
   COUNTRY: 'australia',
+  CSSE_BASE:
+    'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/',
+  CSSE_KEY: 'Victoria, Australia',
 }
 
 export { weatherConfig, covidConfig }
