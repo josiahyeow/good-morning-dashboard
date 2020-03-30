@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import Card from './Card'
 
 const Container = styled.div`
-  min-width: 17rem;
+  min-width: 12rem;
 `
 
 const Time = styled.span`
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
 `
 

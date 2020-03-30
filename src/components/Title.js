@@ -6,10 +6,14 @@ const Welcome = styled.div`
   padding: 1.5rem;
 `
 
+const Text = styled.h1`
+  margin: 0px;
+`
+
 const Title = () => {
   return (
     <Welcome>
-      <h1>Dashboard</h1>
+      <Text>Dashboard</Text>
     </Welcome>
   )
 }

@@ -10,6 +10,9 @@ import CovidVic from './components/CovidVic'
 
 const AppContainer = styled.div`
   font-family: 'Inter', sans-serif;
+  @media only screen and (min-width: 600px) {
+    padding: 1rem;
+  }
 `
 const WidgetSection = styled.section`
   display: flex;
