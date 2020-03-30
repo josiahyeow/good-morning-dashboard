@@ -25,75 +25,77 @@ const Data = styled.span`
   font-size: 2rem;
 `
 
+const getFilename = (offset = 0) => {
+  const date = new Date()
+  date.setDate(date.getDate() - (1 + offset))
+  const formattedDate = date
+    .toLocaleString('en-US')
+    .split(/\D/)
+    .slice(0, 3)
+    .map((num) => num.padStart(2, '0'))
+    .join('-')
+  return `${formattedDate}.csv`
+}
+
 const CovidVic = () => {
-  const [data, setData] = useState({
-    cases: '-',
-    todayCases: '-',
-    deaths: '-',
-    recovered: '-',
-    active: '-',
-    countryInfo: {
-      flag: '',
-    },
-  })
+  const [data, setData] = useState({})
+  const [filename, setFilename] = useState(getFilename())
 
   useEffect(() => {
-    async function fetchData() {
-      const { CSSE_BASE, CSSE_KEY } = covidConfig
-      const date = new Date()
-      date.setDate(date.getDate() - 1)
-      const formattedDate = date
-        .toLocaleString('en-US')
-        .split(/\D/)
-        .slice(0, 3)
-        .map((num) => num.padStart(2, '0'))
-        .join('-')
-      const filename = `${formattedDate}.csv`
-      const request = `${CSSE_BASE}${filename}`
-      const data = await (await fetch(request)).text()
-      const parsedData = await csv({
-        noheader: true,
-        output: 'json',
-        headers: [
-          'FIPS',
-          'Admin2',
-          'state',
-          'Country_Region',
-          'Last_Update',
-          'Lat',
-          'Long',
-          'cases',
-          'deaths',
-          'recovered',
-          'active',
-          'Combined_Key',
-        ],
-      }).fromString(data)
-      setData(parsedData.filter((row) => row['Combined_Key'] === CSSE_KEY)[0])
+    function fetchData() {
+      const { CSSE_BASE, CSSE_REPORT, CSSE_KEY } = covidConfig
+      const request = `${CSSE_BASE}${CSSE_REPORT}${filename}`
+      fetch(request)
+        .then((response) => response.text())
+        .then((text) => {
+          csv({
+            noheader: true,
+            output: 'json',
+            headers: [
+              'FIPS',
+              'Admin2',
+              'state',
+              'Country_Region',
+              'Last_Update',
+              'Lat',
+              'Long',
+              'cases',
+              'deaths',
+              'recovered',
+              'active',
+              'Combined_Key',
+            ],
+          })
+            .fromString(text)
+            .then((parsedData) =>
+              setData(
+                parsedData.filter((row) => row['Combined_Key'] === CSSE_KEY)[0]
+              )
+            )
+        })
+        .catch(setFilename(getFilename(1)))
     }
     fetchData()
-  }, [])
-
-  const { state, cases, deaths, recovered, active } = data
+  }, [filename])
 
   return (
-    <Card title={`COVID-19: ${state}`}>
+    <Card title={`COVID-19: ${data ? data.state : '-'}`}>
       <Statuses>
         <Status>
           <Label>Cases</Label>
-          <Data>{cases}</Data>
+          <Data>{data ? data.cases : '-'}</Data>
         </Status>
         <Status>
           <Label>Active</Label>
-          <Data color={'#f74043'}>{active}</Data>
+          <Data color={'#f74043'}>{data ? data.active : '-'}</Data>
         </Status>
         <Status>
           <Label>Recovered</Label>
-          <Data color={'#40f780'}>{recovered}</Data>
+          <Data color={'#40f780'}>{data ? data.recovered : '-'}</Data>
         </Status>
         <Status>
           <Label>Deaths</Label>
-          <Data color={'#575757'}>{deaths}</Data>
+          <Data color={'#575757'}>{data ? data.deaths : '-'}</Data>
         </Status>
       </Statuses>
     </Card>
