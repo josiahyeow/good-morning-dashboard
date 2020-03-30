@@ -7,7 +7,6 @@ import Calendar from './components/Calendar'
 import Weather from './components/Weather'
 import Covid from './components/Covid'
 import CovidVic from './components/CovidVic'
-import CovidHistory from './components/CovidHistory'
 
 const AppContainer = styled.div`
   font-family: 'Inter', sans-serif;
@@ -31,7 +30,6 @@ const App = () => {
         <Weather />
         <Covid />
         <CovidVic />
-        <CovidHistory />
       </WidgetSection>
     </AppContainer>
   )

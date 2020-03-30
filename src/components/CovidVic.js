@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { covidConfig } from '../config'
 import Card from './Card'
+import CovidHistory from './CovidHistory'
 
 const Statuses = styled.div`
   display: flex;
@@ -98,6 +99,7 @@ const CovidVic = () => {
           <Data color={'#575757'}>{data ? data.deaths : '-'}</Data>
         </Status>
       </Statuses>
+      <CovidHistory state={'Victoria'} />
     </Card>
   )
 }

@@ -5,12 +5,6 @@ import { VictoryChart, VictoryArea, VictoryTheme } from 'victory'
 import { covidConfig } from '../config'
 import Card from './Card'
 
-const Statuses = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 24rem;
-`
-
 const convertToDataArray = (data) => {
   let dataArray = []
   Object.entries(data).map(
@@ -21,34 +15,66 @@ const convertToDataArray = (data) => {
   return dataArray
 }
 
-const CovidHistory = () => {
-  const [history, setHistory] = useState([])
+const fetchStateData = async (url, report, state) => {
+  const data = await (await fetch(`${url}${report}`)).text()
+  const parsedData = await csv({
+    noheader: true,
+    output: 'json',
+  }).fromString(data)
+  return parsedData.filter((row) => row['field1'] === state)[0]
+}
+
+const CovidHistory = ({ state }) => {
+  const [confirmed, setConfirmed] = useState([])
+  const [recovered, setRecovered] = useState([])
+  const [deaths, setDeaths] = useState([])
 
   useEffect(() => {
     async function fetchData() {
-      const { CSSE_BASE, CSSE_SERIES, CSSE_CONFIRMED } = covidConfig
-      const request = `${CSSE_BASE}${CSSE_SERIES}${CSSE_CONFIRMED}`
-      const data = await (await fetch(request)).text()
-      const parsedData = await csv({
-        noheader: true,
-        output: 'json',
-      }).fromString(data)
-      const stateData = parsedData.filter(
-        (row) => row['field1'] === 'Victoria'
-      )[0]
+      const {
+        CSSE_BASE,
+        CSSE_SERIES,
+        CSSE_CONFIRMED,
+        CSSE_RECOVERED,
+        CSSE_DEATHS,
+      } = covidConfig
+      const request = `${CSSE_BASE}${CSSE_SERIES}`
 
-      
-      setHistory(convertToDataArray(stateData))
+      const confirmedData = await fetchStateData(request, CSSE_CONFIRMED, state)
+      // const recoveredData = await fetchStateData(request, CSSE_RECOVERED, state)
+      // const deathsData = await fetchStateData(request, CSSE_DEATHS, state)
+
+      setConfirmed(convertToDataArray(confirmedData))
+      // setRecovered(convertToDataArray(recoveredData))
+      // setDeaths(convertToDataArray(deathsData))
     }
     fetchData()
   }, [])
 
   return (
-    <Card title={`COVID-19: Curve`}>
+    <>
       <VictoryChart theme={VictoryTheme.grayscale}>
-        <VictoryArea data={history} />
+        <VictoryArea
+          style={{ data: { fill: '#000000' } }}
+          data={confirmed}
+          interpolation="natural"
+        />
       </VictoryChart>
-    </Card>
+      {/* <VictoryChart theme={VictoryTheme.grayscale}>
+        <VictoryArea
+          style={{ data: { fill: '#40f780' } }}
+          data={recovered}
+          interpolation="natural"
+        />
+      </VictoryChart>
+      <VictoryChart theme={VictoryTheme.grayscale}>
+        <VictoryArea
+          style={{ data: { fill: '#575757' } }}
+          data={deaths}
+          interpolation="natural"
+        />
+      </VictoryChart> */}
+    </>
   )
 }
 
