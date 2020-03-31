@@ -38,7 +38,7 @@ const getFilename = (offset = 0) => {
   return `${formattedDate}.csv`
 }
 
-const CovidVic = () => {
+const CovidState = () => {
   const [data, setData] = useState({})
   const [filename, setFilename] = useState(getFilename())
 
@@ -104,4 +104,4 @@ const CovidVic = () => {
   )
 }
 
-export default CovidVic
+export default CovidState

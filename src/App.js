@@ -6,7 +6,7 @@ import WeekDay from './components/WeekDay'
 import Calendar from './components/Calendar'
 import Weather from './components/Weather'
 import Covid from './components/Covid'
-import CovidVic from './components/CovidVic'
+import CovidState from './components/CovidState'
 
 const AppContainer = styled.div`
   font-family: 'Inter', sans-serif;
@@ -29,7 +29,7 @@ const App = () => {
         <Calendar />
         <Weather />
         <Covid />
-        <CovidVic />
+        <CovidState />
       </WidgetSection>
     </AppContainer>
   )
