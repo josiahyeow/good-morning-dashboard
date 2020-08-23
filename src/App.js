@@ -5,8 +5,6 @@ import Clock from './components/Clock'
 import WeekDay from './components/WeekDay'
 import Calendar from './components/Calendar'
 import Weather from './components/Weather'
-import Covid from './components/Covid'
-import CovidState from './components/CovidState'
 
 const AppContainer = styled.div`
   font-family: 'Inter', sans-serif;
@@ -28,8 +26,6 @@ const App = () => {
         <WeekDay />
         <Calendar />
         <Weather />
-        <Covid />
-        <CovidState />
       </WidgetSection>
     </AppContainer>
   )
